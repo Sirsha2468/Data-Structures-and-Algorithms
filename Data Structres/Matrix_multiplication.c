@@ -1,27 +1,53 @@
 #include<stdio.h>
 #include<stdlib.h>
 int main() {
-	int a[2][2], b[2][2], d[2][2], r, c, k, sum;
-	printf("\n Enter 4 numbers for 1st matrix: ");
-	for(r = 0; r <= 1; r++) 
-	for(c = 0; c <= 1; c++)
-	scanf("%d", &a[r][c]);
-	prinf("Enter 4 numbers for 2nd matrix: ");
-	for(r=0; r<=1;r++)
-	for(c=0; c<=1; c++)
-	scanf("%d", &b[r][c]);
-	for(r=0; r<=1; r++)
+	int a[10][10], b[10][10], mul[10][10], r, c, k, i, j; 
+	
+	printf("Enter the number of rows:\n");
+	scanf("%d", &r);
+	
+	printf("Enter the number of columns:\n");
+	scanf("%d", &c);
+	
+	printf("\nEnter the 1st matrix elements:\n");
+	
+	for(i=1; i<=r; i++)
 	{
-	for(c=0; c<=1; c++) {
-		sum = 0; // For taking garbage value in it
-		for(k = 0; k <=1; k++)
-		sum = sum + a[r][k]*b[k][c];
-		d[r][c] = sum;
+		for(j=1; j<=c; j++)
+		{
+			scanf("%d", &a[i][j]);
+		}
 	}
-}
-	for(r=0; r<=1; r++) {
-		for(c=0; c<=1; c++)
-			printf("%d\n", d[r][c]);
+	
+	printf("\nEnter the 2nd matrix elements:\n");
+	for(i=1; i<=r; i++)
+	{
+		for(j=1; j<=c; j++)
+		{
+			scanf("%d", &b[i][j]);
+		}
+	}
+	
+	// Multiplication of the matrix
+	printf("\nMultiplication of the matrix:\n");
+	
+	for(i=1; i<=r; i++)
+	{
+		for(j=1; j<=c; j++)
+		{
+			mul[i][j] = 0;
+			
+			for(k=1; k<= c; k++)
+			{
+				mul[i][j] += a[i][k]*b[k][j];
+			}
+		}
+	}
+//	Printing the result
+	for(i=1; i<=r; i++) {
+		for(j=1; j<=c; j++) {
+			printf("%d\n", mul[i][j]);
+		}
 	}
 	return 0;
 }
